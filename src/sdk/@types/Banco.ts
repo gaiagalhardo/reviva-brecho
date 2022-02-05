@@ -7,4 +7,6 @@ export namespace Banco {
 
     export type Summary = RevivaBrecho.components['schemas']['BancoSummary']
 
+    export type IdInput = RevivaBrecho.components['schemas']['BancoIdInput']
+
 }
