@@ -1,7 +1,7 @@
 import { Layout, Menu } from 'antd';
 import {
     DashboardOutlined,
-    FlagOutlined,
+    UserAddOutlined,
     PlusCircleOutlined,
     TableOutlined,
     BankOutlined
@@ -40,10 +40,20 @@ export default function DefaultLayoutSidebar() {
                 <SubMenu
                     key='bancos'
                     icon={<BankOutlined />}
-                    title='bancos'
+                    title='Bancos'
                 >
-                    <Menu.Item key='/bancos/novo' onClick={() => navigate('/bancos/novo')} icon={<PlusCircleOutlined />}>Nova Banco</Menu.Item>
+                    <Menu.Item key='/bancos/novo' onClick={() => navigate('/bancos/novo')} icon={<PlusCircleOutlined />}>Novo Banco</Menu.Item>
                     <Menu.Item key='/bancos' onClick={() => navigate('/bancos')} icon={<TableOutlined />}>Consultar</Menu.Item>
+
+                </SubMenu>
+
+                <SubMenu
+                    key='fornecedoras'
+                    icon={<UserAddOutlined />}
+                    title='Fornecedoras'
+                >
+                    <Menu.Item key='/fornecedoras/nova' onClick={() => navigate('/fornecedoras/nova')} icon={<PlusCircleOutlined />}>Nova Fornecedora</Menu.Item>
+                    <Menu.Item key='/fornecedoras' onClick={() => navigate('/fornecedoras')} icon={<TableOutlined />}>Consultar</Menu.Item>
 
                 </SubMenu>
 
