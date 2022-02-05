@@ -4,14 +4,14 @@ import { BrowserRouter } from 'react-router-dom';
 import DefaultLayout from './app/layouts/Default/Default.layout';
 import 'antd/dist/antd.css';
 import './core/import.css'
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Routes from './app/routes';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <DefaultLayout>
-        <App />
+        <Routes />
       </DefaultLayout>
     </BrowserRouter>
   </React.StrictMode>,
