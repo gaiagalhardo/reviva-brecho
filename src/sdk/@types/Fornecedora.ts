@@ -7,4 +7,6 @@ export namespace Fornecedora {
 
     export type Summary = RevivaBrecho.components['schemas']['FornecedoraSummary']
 
+    export type Detailed = RevivaBrecho.components['schemas']['FornecedoraDetailed']
+
 }
