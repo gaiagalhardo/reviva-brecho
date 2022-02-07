@@ -1,11 +1,23 @@
-import { Button, Space, Table, Tooltip } from "antd"
+import {
+    Button,
+    Card,
+    Input,
+    Space,
+    Table,
+    Tooltip
+} from "antd"
 import { useEffect, useState } from "react"
 import format from 'date-fns/format';
 import parseISO from 'date-fns/parseISO';
-import { EyeOutlined, EditOutlined } from '@ant-design/icons'
+import {
+    EyeOutlined,
+    EditOutlined,
+    SearchOutlined
+} from '@ant-design/icons'
 import { Fornecedora } from "../../sdk/@types/Fornecedora"
 import FornecedoraService from "../../sdk/service/Fornecedora.service"
 import { Link } from "react-router-dom";
+import { ColumnProps } from "antd/lib/table";
 
 export default function FornecedoraList() {
 
@@ -16,6 +28,69 @@ export default function FornecedoraList() {
             .getAllFornecedoras()
             .then(setFornecedoras)
     }, [])
+
+    const getColumnSearchProps = (
+        dataIndex: keyof Fornecedora.Summary,
+        displayName?: string
+    ): ColumnProps<Fornecedora.Summary> => ({
+        filterDropdown: ({
+            selectedKeys,
+            setSelectedKeys,
+            confirm,
+            clearFilters
+
+        }) =>
+        (
+            <Card>
+                <Input
+                    style={{ marginBottom: 8, display: 'block' }}
+                    value={selectedKeys[0]}
+                    placeholder={`Buscar ${displayName || dataIndex}`}
+                    onChange={(e) => {
+                        setSelectedKeys(
+                            e.target.value ? [e.target.value] : []
+                        );
+                    }}
+
+                    onPressEnter={() => confirm()}
+                />
+                <Space>
+                    <Button
+                        type={'primary'}
+                        size={'small'}
+                        style={{ width: 90 }}
+                        onClick={() => confirm()}
+                        icon={<SearchOutlined />}
+                    >
+                        Buscar
+                    </Button>
+                    <Button
+                        onClick={() => clearFilters}
+                        size={'small'}
+                        style={{ width: 90 }}
+                    >
+                        Limpar
+                    </Button>
+                </Space>
+            </Card>
+        ),
+
+        filterIcon: (filtered: boolean) => (
+            <SearchOutlined
+                style={{ color: filtered ? '#0099ff' : undefined }}
+            />
+        ),
+
+        // @ts-ignore
+        onFilter: (value, record) =>
+            record[dataIndex]
+                ? record[dataIndex]
+                    .toString()
+                    .toLocaleLowerCase()
+                    .includes((value as string).toLocaleLowerCase())
+                : ''
+
+    })
 
     return <>
         <Table<Fornecedora.Summary>
@@ -32,7 +107,8 @@ export default function FornecedoraList() {
                 },
                 {
                     dataIndex: 'nome',
-                    title: 'Nome'
+                    title: 'Nome',
+                    ...getColumnSearchProps('nome', 'Nome')
                 },
                 {
                     dataIndex: 'dataAniversario',
@@ -49,7 +125,8 @@ export default function FornecedoraList() {
                 },
                 {
                     dataIndex: 'email',
-                    title: 'E-mail'
+                    title: 'E-mail',
+                    ...getColumnSearchProps('email', 'E-mail')
                 },
                 {
                     dataIndex: 'instagram',
