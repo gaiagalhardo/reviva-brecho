@@ -1,6 +1,7 @@
 import {
     Button,
     Card,
+    Descriptions,
     Input,
     Space,
     Table,
@@ -8,7 +9,6 @@ import {
 } from "antd"
 import { useEffect, useState } from "react"
 import format from 'date-fns/format';
-import parseISO from 'date-fns/parseISO';
 import {
     EyeOutlined,
     EditOutlined,
@@ -98,44 +98,101 @@ export default function FornecedoraList() {
             dataSource={fornecedoras}
             columns={[
                 {
-                    dataIndex: 'id',
-                    title: '#'
+                    title: 'Fornecedoras',
+                    responsive: ['xs'],
+                    render(fornecedora: Fornecedora.Summary) {
+                        return (
+                            <Descriptions column={1} size={'small'}>
+                                <Descriptions.Item label={'Código'}>
+                                    {fornecedora.codigo}
+                                </Descriptions.Item>
+                                <Descriptions.Item label={'Nome'}>
+                                    {fornecedora.nome}
+                                </Descriptions.Item>
+                                <Descriptions.Item label={'Nascimento'}>
+                                    {format(
+                                        new Date(fornecedora.dataAniversario),
+                                        'dd/MM/yyyy'
+                                    )}
+                                </Descriptions.Item>
+                                <Descriptions.Item label={'Fone'}>
+                                    {fornecedora.fone}
+                                </Descriptions.Item>
+                                <Descriptions.Item label={'E-mail'}>
+                                    {fornecedora.email}
+                                </Descriptions.Item>
+                                <Descriptions.Item label={'Instagram'}>
+                                    {fornecedora.instagram}
+                                </Descriptions.Item>
+                                <Descriptions.Item label={'Ações'}>
+                                    <Space>
+                                        <Tooltip title={'Visualizar Fornecedora'} placement={'right'}>
+                                            <Link to={''}>
+                                                <Button size='small' icon={<EyeOutlined />} />
+                                            </Link>
+                                        </Tooltip>
+                                        <Tooltip title={'Editar Fornecedora'} placement={'right'}>
+                                            <Link to={`/fornecedoras/edicao/${fornecedora.id}`}>
+                                                <Button size='small' icon={<EditOutlined />} />
+                                            </Link>
+                                        </Tooltip>
+                                    </Space>
+                                </Descriptions.Item>
+                            </Descriptions>
+                        )
+                    }
                 },
                 {
                     dataIndex: 'codigo',
-                    title: 'Código'
+                    title: 'Código',
+                    width: 48,
+                    align: 'center',
+                    responsive: ['sm']
                 },
                 {
                     dataIndex: 'nome',
                     title: 'Nome',
-                    ...getColumnSearchProps('nome', 'Nome')
+                    ...getColumnSearchProps('nome', 'Nome'),
+                    width: 200,
+                    responsive: ['sm']
                 },
                 {
                     dataIndex: 'dataAniversario',
-                    title: 'Data de Nascimento',
+                    title: 'Nascimento',
+                    align: 'center',
+                    width: 150,
+                    responsive: ['sm'],
                     render(dataAniversario: string) {
                         return format(
-                            parseISO(dataAniversario), 'dd/MM/yyyy'
+                            new Date(dataAniversario), 'dd/MM/yyyy'
                         )
                     }
                 },
                 {
                     dataIndex: 'fone',
-                    title: 'Fone'
+                    title: 'Fone',
+                    width: 120,
+                    responsive: ['sm']
                 },
                 {
                     dataIndex: 'email',
                     title: 'E-mail',
-                    ...getColumnSearchProps('email', 'E-mail')
+                    ...getColumnSearchProps('email', 'E-mail'),
+                    width: 200,
+                    responsive: ['sm']
                 },
                 {
                     dataIndex: 'instagram',
-                    title: 'Instagram'
+                    title: 'Instagram',
+                    width: 110,
+                    responsive: ['sm']
                 },
                 {
                     dataIndex: 'id',
                     title: 'Ações',
                     align: 'center',
+                    width: 100,
+                    responsive: ['sm'],
                     render(id: number) {
                         return <Space>
                             <Tooltip title={'Visualizar Fornecedora'} placement={'right'}>
