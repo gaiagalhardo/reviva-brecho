@@ -98,21 +98,22 @@ export default function FornecedoraList() {
             dataSource={fornecedoras}
             columns={[
                 {
-                    dataIndex: 'id',
-                    title: '#'
-                },
-                {
                     dataIndex: 'codigo',
-                    title: 'Código'
+                    title: 'Código',
+                    width: 48,
+                    align: 'center'
                 },
                 {
                     dataIndex: 'nome',
                     title: 'Nome',
-                    ...getColumnSearchProps('nome', 'Nome')
+                    ...getColumnSearchProps('nome', 'Nome'),
+                    width: 200,
                 },
                 {
                     dataIndex: 'dataAniversario',
-                    title: 'Data de Nascimento',
+                    title: 'Nascimento',
+                    align: 'center',
+                    width: 150,
                     render(dataAniversario: string) {
                         return format(
                             parseISO(dataAniversario), 'dd/MM/yyyy'
@@ -121,21 +122,25 @@ export default function FornecedoraList() {
                 },
                 {
                     dataIndex: 'fone',
-                    title: 'Fone'
+                    title: 'Fone',
+                    width: 120,
                 },
                 {
                     dataIndex: 'email',
                     title: 'E-mail',
-                    ...getColumnSearchProps('email', 'E-mail')
+                    ...getColumnSearchProps('email', 'E-mail'),
+                    width: 200
                 },
                 {
                     dataIndex: 'instagram',
-                    title: 'Instagram'
+                    title: 'Instagram',
+                    width: 110
                 },
                 {
                     dataIndex: 'id',
                     title: 'Ações',
                     align: 'center',
+                    width: 100,
                     render(id: number) {
                         return <Space>
                             <Tooltip title={'Visualizar Fornecedora'} placement={'right'}>
