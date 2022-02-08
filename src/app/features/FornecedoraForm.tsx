@@ -5,20 +5,20 @@ import {
     Input,
     Button,
     notification,
-    Avatar,
     DatePicker,
     Divider,
     Select,
     Tabs,
-    Upload,
 } from "antd";
 import { MaskedInput } from "antd-mask-input";
-import { UserOutlined } from '@ant-design/icons'
 import { Fornecedora } from "../../sdk/@types/Fornecedora";
 import FornecedoraService from "../../sdk/service/Fornecedora.service";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CustomError from "../../sdk/CustomError";
 import { Moment } from 'moment'
+import { Banco } from "../../sdk/@types";
+import BancoService from "../../sdk/service/Banco.service";
+import { useNavigate } from 'react-router-dom';
 
 const { TabPane } = Tabs
 
@@ -38,9 +38,28 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
     const [activeTab, setActiveTab] = useState<'personal' | 'bankAccount'>('personal')
     const [form] = Form.useForm<Fornecedora.Input>();
 
+    const navigate = useNavigate()
+
+    const [bancos, setBancos] = useState<Banco.Summary[]>()
+
+    useEffect(() => {
+        BancoService
+            .getAllBancos()
+            .then(setBancos)
+
+    }, [])
+
+
+
     return (
         <Form
             form={form}
+            fields={[
+                {
+                    name: ['banco', 'id'],
+                    value: 1,
+                },
+            ]}
             layout="vertical"
             autoComplete={'off'}
             onFinishFailed={(fields) => {
@@ -79,6 +98,8 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                         message: 'Sucesso',
                         description: 'Fornecedora salva com sucesso'
                     })
+
+
                 } catch (error) {
                     console.log(error)
                     if (error instanceof CustomError) {
@@ -120,10 +141,13 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                             message: 'Houve um erro'
                         })
                     }
+
                 }
+                navigate('/fornecedoras')
             }}
 
             initialValues={props.fornecedora}
+
 
         >
 
@@ -317,16 +341,12 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                                             }
                                         ]}
                                     >
-                                        <Select placeholder={'Selecione o banco'}>
-                                            <Select.Option value={'0'}>
-                                                Nenhum
-                                            </Select.Option>
-                                            <Select.Option key={1} value={'1'}>
-                                                Banco do Brasil
-                                            </Select.Option>
-                                            <Select.Option key={2} value={'2'}>
-                                                Caixa Econômica
-                                            </Select.Option>
+                                        <Select placeholder={'Selecione o banco'} >
+                                            {bancos?.map(b => {
+                                                return (
+                                                    <Select.Option key={b.id} value={b.id} >{b.nome}</Select.Option>
+                                                )
+                                            })}
                                         </Select>
                                     </Form.Item>
                                 </Col>

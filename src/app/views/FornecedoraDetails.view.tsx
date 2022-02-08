@@ -7,7 +7,7 @@ import {
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { format } from "date-fns/esm";
 import { useEffect } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import useFornecedora from "../../core/hooks/useFornecedora";
 
 export default function FornecedoraDetailsView() {
@@ -59,12 +59,14 @@ export default function FornecedoraDetailsView() {
 
             <Col xs={24} lg={20}>
                 <Space>
-                    <Button type="primary">
-                        Editar Fornecedora
-                    </Button>
-                    <Button type="primary">
+                    <Link to={`/fornecedoras/edicao/${fornecedora.id}`}>
+                        <Button type="primary">
+                            Editar Fornecedora
+                        </Button>
+                    </Link>
+                    {/* <Button type="primary">
                         Remover Fornecedora
-                    </Button>
+                    </Button> */}
                 </Space>
             </Col>
             <Col xs={24}>
