@@ -127,7 +127,7 @@ export default function FornecedoraList() {
                                 <Descriptions.Item label={'Ações'}>
                                     <Space>
                                         <Tooltip title={'Visualizar Fornecedora'} placement={'right'}>
-                                            <Link to={''}>
+                                            <Link to={`/fornecedoras/${fornecedora.id}`}>
                                                 <Button size='small' icon={<EyeOutlined />} />
                                             </Link>
                                         </Tooltip>
@@ -196,7 +196,7 @@ export default function FornecedoraList() {
                     render(id: number) {
                         return <Space>
                             <Tooltip title={'Visualizar Fornecedora'} placement={'right'}>
-                                <Link to={''}>
+                                <Link to={`/fornecedoras/${id}`}>
                                     <Button size='small' icon={<EyeOutlined />} />
                                 </Link>
                             </Tooltip>
