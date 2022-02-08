@@ -5,6 +5,7 @@ import CustomError from "../sdk/CustomError";
 import BancoCreateView from "./views/BancoCreate.view";
 import BancoListView from "./views/BancoList.view";
 import FornecedoraCreateView from "./views/FornecedoraCreate.view";
+import FornecedoraDetailsView from "./views/FornecedoraDetails.view";
 import FornecedoraEditView from "./views/FornecedoraEdit.view";
 import FornecedoraListView from "./views/FornecedoraList.view";
 import HomeView from "./views/Home.view";
@@ -62,6 +63,10 @@ export default function Routes() {
         {
             path: '/fornecedoras/edicao/:id',
             element: <FornecedoraEditView />
+        },
+        {
+            path: '/fornecedoras/:id',
+            element: <FornecedoraDetailsView />
         }
     ]);
 
