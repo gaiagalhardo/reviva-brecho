@@ -129,18 +129,9 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
 
             <Row gutter={24} >
 
-                <Col lg={4}>
-                    <Upload>
-                        <Avatar
-                            style={{ cursor: 'pointer' }}
-                            size={128}
-                            icon={<UserOutlined />}
-                        />
 
-                    </Upload>
-                </Col>
 
-                <Col lg={10}>
+                <Col lg={10} xs={24}>
                     <Form.Item
                         label={'Nome'}
                         name={'nome'}
@@ -162,7 +153,7 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                     </Form.Item>
                 </Col>
 
-                <Col lg={10}>
+                <Col lg={10} xs={24}>
                     <Form.Item
                         label={'Data de Aniversário'}
                         name={'dataAniversario'}
@@ -185,12 +176,12 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                 </Col>
 
 
-                <Col lg={24}>
+                <Col lg={24} sm={24}>
                     <Tabs defaultActiveKey={'personal'} activeKey={activeTab} onChange={tab => setActiveTab(tab as 'personal' | 'bankAccount')}>
                         <TabPane key={'personal'} tab={'Dados pessoais'} >
 
                             <Row gutter={24}>
-                                <Col lg={8}>
+                                <Col lg={8} xs={24}>
                                     <Form.Item
                                         label={'Fone'}
                                         name={'fone'}
@@ -201,7 +192,7 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                                         />
                                     </Form.Item>
                                 </Col>
-                                <Col lg={8}>
+                                <Col lg={8} xs={24}>
                                     <Form.Item
                                         label={'E-mail'}
                                         name={'email'}
@@ -215,7 +206,7 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                                         <Input type={'email'} placeholder={'E.g.: reviva@reviva.com'} />
                                     </Form.Item>
                                 </Col>
-                                <Col lg={8}>
+                                <Col lg={8} xs={24}>
                                     <Form.Item
                                         label={'Instagram'}
                                         name={'instagram'}
@@ -226,7 +217,7 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                             </Row>
 
                             <Row gutter={24}>
-                                <Col lg={8}>
+                                <Col lg={8} xs={8}>
                                     <Form.Item
                                         label={'Estado'}
                                         name={['endereco', 'estado']}
@@ -244,7 +235,7 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                                         </Select>
                                     </Form.Item>
                                 </Col>
-                                <Col lg={8}>
+                                <Col lg={8} xs={16}>
                                     <Form.Item
                                         label={'Cidade'}
                                         name={['endereco', 'cidade']}
@@ -258,7 +249,7 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                                         <Input placeholder={'E.g.: Belém'} />
                                     </Form.Item>
                                 </Col>
-                                <Col lg={8}>
+                                <Col lg={8} xs={24}>
                                     <Form.Item
                                         label={'Cep'}
                                         name={['endereco', 'cep']}
@@ -279,7 +270,7 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                             </Row>
 
                             <Row gutter={24}>
-                                <Col lg={8}>
+                                <Col lg={8} xs={24}>
                                     <Form.Item
                                         label={'Logradouro'}
                                         name={['endereco', 'logradouro']}
@@ -293,7 +284,7 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                                         <Input placeholder={'E.g.: Av. Almirante Barroso, 1234'} />
                                     </Form.Item>
                                 </Col>
-                                <Col lg={8}>
+                                <Col lg={8} xs={24}>
                                     <Form.Item
                                         label={'Bairro'}
                                         name={['endereco', 'bairro']}
@@ -301,7 +292,7 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                                         <Input placeholder={'E.g.: Marco'} />
                                     </Form.Item>
                                 </Col>
-                                <Col lg={8}>
+                                <Col lg={8} xs={24}>
                                     <Form.Item
                                         label={'Complemento'}
                                         name={['endereco', 'complemento']}
@@ -315,7 +306,7 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                         <TabPane key={'bankAccount'} tab={'Dados Bancários'} forceRender={true}>
 
                             <Row gutter={24}>
-                                <Col lg={8}>
+                                <Col lg={8} xs={24}>
                                     <Form.Item
                                         label={'Banco'}
                                         name={['banco', 'id']}
@@ -340,7 +331,7 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                                     </Form.Item>
                                 </Col>
 
-                                <Col lg={8}>
+                                <Col lg={8} xs={16}>
                                     <Form.Item
                                         label={'Conta'}
                                         name={'conta'}
@@ -348,7 +339,7 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                                         <Input placeholder={'E.g.: 000000'} type={'number'} min={0} />
                                     </Form.Item>
                                 </Col>
-                                <Col lg={8}>
+                                <Col lg={8} xs={8}>
                                     <Form.Item
                                         label={'Dígito'}
                                         name={'digito'}
@@ -359,7 +350,7 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                             </Row>
 
                             <Row gutter={24}>
-                                <Col lg={8}>
+                                <Col lg={8} xs={24}>
                                     <Form.Item
                                         label={'Agência'}
                                         name={'agencia'}
@@ -368,7 +359,7 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                                     </Form.Item>
                                 </Col>
 
-                                <Col lg={8}>
+                                <Col lg={8} xs={24}>
                                     <Form.Item
                                         label={'Tipo Conta'}
                                         name={'tipoConta'}
@@ -389,7 +380,7 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                             </Row>
 
                             <Row gutter={24}>
-                                <Col lg={8}>
+                                <Col lg={8} xs={24}>
                                     <Form.Item
                                         label={'Chave Pix'}
                                         name={'chavePix'}
@@ -408,7 +399,7 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                                     </Form.Item>
                                 </Col>
 
-                                <Col lg={8}>
+                                <Col lg={8} xs={24}>
                                     <Form.Item
                                         label={'Pix'}
                                         name={'pix'}
@@ -425,7 +416,11 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
                 <Col lg={24}>
                     <Row justify={'end'}>
                         <Button type={'primary'} htmlType={'submit'}>
-                            Salvar Fornecedora
+                            {
+                                props.fornecedora
+                                    ? 'Atualizar Fornecedora'
+                                    : 'Cadastrar Fornecedora'
+                            }
                         </Button>
                     </Row>
                 </Col>
