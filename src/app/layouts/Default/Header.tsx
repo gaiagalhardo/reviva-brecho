@@ -9,7 +9,7 @@ export default function DefaultLayoutHeader() {
                 style={{ height: '100%' }}
                 align='middle'>
 
-                <div style={{ color: '#fff' }}>Reviva Brechó</div>
+                <div style={{ color: '#fff' }}>Reviva Moda Circular</div>
 
                 <Avatar />
 
