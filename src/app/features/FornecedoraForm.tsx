@@ -57,7 +57,7 @@ export default function FornecedoraForm(props: FornecedoraFormProps) {
             fields={[
                 {
                     name: ['banco', 'id'],
-                    value: 1,
+                    value: props.fornecedora ? props.fornecedora.banco.id : 1
                 },
             ]}
             layout="vertical"
